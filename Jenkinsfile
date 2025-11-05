@@ -14,18 +14,18 @@ pipeline {
 
     stage('Build Services') {
       steps {
-        sh 'docker build -t kceecool1/user-service ./user-service'
-        sh 'docker build -t kceecool1/product-service ./product-service'
-        sh 'docker build -t kceecool1/cart-service ./cart-service'
+        sh 'docker build -t kceecool/user-service ./user-service'
+        sh 'docker build -t kceecool/product-service ./product-service'
+        sh 'docker build -t kceecool/cart-service ./cart-service'
       }
     }
 
     stage('Push to Docker Hub') {
       steps {
         sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-        sh 'docker push kceecool1/user-service'
-        sh 'docker push kceecool1/product-service'
-        sh 'docker push kceecool1/cart-service'
+        sh 'docker push kceecool/user-service'
+        sh 'docker push kceecool/product-service'
+        sh 'docker push kceecool/cart-service'
       }
     }
 
