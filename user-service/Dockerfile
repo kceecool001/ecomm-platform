@@ -5,7 +5,7 @@ FROM node:18-alpine AS base
 WORKDIR /app
 
 # Install dependencies
-COPY ppackage*.json ./
+COPY package*.json ./
 RUN if [ -f package-lock.json ]; then npm ci --only=production; else npm install --only=production; fi
 
 # Copy only necessary files
